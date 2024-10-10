@@ -1,12 +1,11 @@
-#practica1
+#PRACTICA1
 
 
 #PART 1
-gcut -d',' -f1-14 --complement "supervivents.csv" > "temp.csv"
-
+cut -d',' -f1-11,13-15 supervivents.csv > temp.csv
 
 #PART 2
-awk -F',' '{if ($14 == "False") print $0}' temp.csv > temp2.csv
+awk -F',' '$15 != "True" {print $0}' temp.csv > temp2.csv
 linies_originals=$(wc -l < temp.csv)
 linies_noves=$(wc -l < temp2.csv)
 resta=$((linies_originals - linies_noves))

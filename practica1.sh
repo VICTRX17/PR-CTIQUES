@@ -6,7 +6,6 @@ cut -d',' -f1-11,13-15 supervivents.csv > temp.csv
 
 #PART 2
 awk -F',' '$14 != "True" {print $0}' temp.csv > temp2.csv
-#cut -d',' '-f1-11,13-15' supervivents.csv > temp.csv
 
 #PART 2
 linies_originals=$(wc -l < temp.csv)

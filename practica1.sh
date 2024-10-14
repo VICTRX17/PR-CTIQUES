@@ -23,10 +23,11 @@ echo 'PROCÉS 3 FINALITZAT'
 
 
 #PART 4
-while IFS=',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count thumbnail_link comments_disabled rating_disabled video_error description
-do
+while IFS=',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count comments_disabled rating_disabled
+do 
   if [[ "$video_id" != "video_id" ]]; then
-    if [ "$views" -gt 0 ]; then
+  echo $views
+    if [ $views -gt 0 ]; then
       Rlikes=$(echo "scale=2; ($likes*100)/$views" | bc)
       Rdislikes=$(echo "scale=2; ($dislikes*100)/$views" | bc)
     else
@@ -36,7 +37,7 @@ do
 
     echo "$video_id,$trending_date,$title,$channel_title,$category_id,$publish_time,$tags,$views,$likes,$dislikes,$comment_count,$comments_disabled,$rating_disabled,$video_error,$Rlikes,$Rdislikes" >> temp4.csv
   else
-    echo "$video_id,$trending_date,$title,$channel_title,$category_id,$publish_time,$tags,$views,$likes,$dislikes,$comment_count,$comments_disabled,$rating_disabled,$video_error,Rlikes,Rdislikes" > temp4.csv
+    echo "$video_id,$trending_date,$title,$channel_title,$category_id,$publish_time,$tags,$views,$likes,$dislikes,$comment_count,$comments_disabled,$rating_disabled,$video_error,ranking_views,Rlikes,Rdislikes" > temp4.csv
   fi
 done < temp3.csv
 

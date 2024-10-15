@@ -23,8 +23,15 @@ echo 'PROCÉS 3 FINALITZAT'
 
 
 #PART 4
-while IFS=',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count comments_disabled rating_disabled
-do 
+
+head -n 1 temp3.csv | cut -d',' -f1-15 | awk -F, '{print$0",Rlikes,Rdislikes"} > temp4.csv
+
+nano codi.sh
+
+#1/bin/bash
+
+tail -n +2 temp3.csv | while IFS=',' read -r video_id trending_date title channel_title category_id publish_time tags views likes dislikes comment_count comments_disabled rating_disabled
+do
   if [[ "$video_id" != "video_id" ]]; then
   echo $views
     if [ $views -gt 0 ]; then
